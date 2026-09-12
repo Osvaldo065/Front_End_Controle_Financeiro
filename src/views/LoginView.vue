@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-sm mx-auto mt-12">
-    <h1 class="text-xl font-semibold text-ledger mb-6">Faça seu Login</h1>
+    <h1 class="text-xl font-semibold text-ledger mb-6">Faça seu Login!</h1>
 
     <form @submit.prevent="entrar" class="space-y-4">
       <div>
