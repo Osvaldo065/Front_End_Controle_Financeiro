@@ -42,7 +42,7 @@
       <tbody class="divide-y divide-line">
         <tr v-for="l in lancamentos" :key="l.id_lancamento">
           <td class="px-3 py-2">{{ l.descricao }}</td>
-          <td class="px-3 py-2">{{ l.id_categoria ?? l.nome_categoria ?? '-' }}</td>
+          <td class="px-3 py-2">{{ l.categoria ?? '-' }}</td>
           <td class="px-3 py-2 font-mono">{{ formatarData(l.data_lancamento) }}</td>
           <td
             class="px-3 py-2 text-right font-mono"
