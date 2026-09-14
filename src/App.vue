@@ -14,5 +14,9 @@ import NavBar from './components/NavBar.vue'
 import { isAuthenticated } from './stores/auth'
 
 const route = useRoute()
-const isAuth = computed(() => isAuthenticated() && !route.meta.public)
+
+const isAuth = computed(() => {
+  const isPublicRoute = route.meta.public
+  return isAuthenticated() && !isPublicRoute
+})
 </script>
