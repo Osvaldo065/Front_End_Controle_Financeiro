@@ -28,7 +28,7 @@
         <select id="categoria" v-model.number="form.id_categoria" required
           class="w-full border border-line rounded px-3 py-2 bg-white">
           <option disabled :value="null">Selecione...</option>
-          <option v-for="c in categorias" :key="c.id" :value="c.id">{{ c.nome }}</option>
+          <option v-for="c in categorias" :key="c.id_categoria" :value="c.id_categoria">{{ c.nome }}</option>
         </select>
       </div>
 
@@ -51,8 +51,9 @@
       </div>
 
       <div>
-        <label for="tipo_pagamento">Forma de pagamento</label>
-        <select v-model="form.tipo_pagamento" required>
+        <label class="block text-sm mb-1" for="tipo_pagamento">Forma de pagamento</label>
+        <select id="tipo_pagamento" v-model="form.tipo_pagamento" required
+          class="w-full border border-line rounded px-3 py-2 bg-white">
           <option disabled :value="null">Selecione...</option>
           <option value="PIX">PIX</option>
           <option value="Dinheiro">Dinheiro</option>

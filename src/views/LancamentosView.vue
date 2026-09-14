@@ -51,7 +51,7 @@
             {{ formatarMoeda(l.valor) }}
           </td>
           <td class="px-3 py-2 text-right whitespace-nowrap">
-            <router-link :to="`/lancamentos/${l.id}/editar`" class="text-ledger hover:underline mr-3">Editar</router-link>
+            <router-link :to="`/lancamentos/${l.id_lancamento}/editar`" class="text-ledger hover:underline mr-3">Editar</router-link>
             <button @click="remover(l.id)" class="text-rust hover:underline">Excluir</button>
           </td>
         </tr>
