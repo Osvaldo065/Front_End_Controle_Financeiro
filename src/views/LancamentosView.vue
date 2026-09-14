@@ -21,8 +21,8 @@
       </select>
       <select v-model="filtros.tipo_transacao" @change="carregar" class="border border-line rounded px-2 py-1 bg-white">
         <option :value="null">Tipo (todos)</option>
-        <option value="RECEITA">Receita</option>
-        <option value="DESPESA">Despesa</option>
+        <option value="Receita">Receita</option>
+        <option value="Despesa">Despesa</option>
       </select>
     </div>
 
@@ -43,10 +43,10 @@
         <tr v-for="l in lancamentos" :key="l.id">
           <td class="px-3 py-2">{{ l.descricao }}</td>
           <td class="px-3 py-2">{{ l.categoria ?? l.nome_categoria ?? '-' }}</td>
-          <td class="px-3 py-2 font-mono">{{ formatarData(l.data) }}</td>
+          <td class="px-3 py-2 font-mono">{{ formatarData(l.data_lancamento) }}</td>
           <td
             class="px-3 py-2 text-right font-mono"
-            :class="l.tipo_transacao === 'DESPESA' ? 'text-rust' : 'text-ledger'"
+            :class="l.tipo_transacao === 'Despesa' ? 'text-rust' : 'text-ledger'"
           >
             {{ formatarMoeda(l.valor) }}
           </td>
