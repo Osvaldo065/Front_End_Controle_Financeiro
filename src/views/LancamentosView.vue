@@ -1,9 +1,9 @@
 <template>
-  <div class="relative min-h-screen">
+  <div class="relative min-h-screen overflow-hidden">
 
-    <!-- Fundo degradê -->
+    <!-- Fundo -->
     <div
-      class="absolute inset-0
+      class="fixed inset-0
              bg-gradient-to-br
              from-[hsl(146,28%,35%)]
              via-[hsl(146,30%,42%)]
@@ -11,63 +11,56 @@
     ></div>
 
     <!-- Conteúdo -->
-<div
-  class="relative
-         p-4
-         pt-[88px]
-         sm:p-6
-         sm:pt-[96px]"
->
-
-  <!-- Cabeçalho -->
-  <div
-    class="max-w-6xl mx-auto mb-6
-           flex flex-col sm:flex-row
-           sm:items-center
-           sm:justify-between
-           gap-4"
-  >
-    <div>
-      <h1
-        class="text-xl sm:text-2xl
-               font-semibold
-               text-white"
-      >
-        Lançamentos
-      </h1>
-
-      <p
-        class="text-sm
-               text-white/75
-               mt-1
-               leading-relaxed"
-      >
-        Consulte e gerencie seus lançamentos financeiros.
-      </p>
-    </div>
-
-    <!-- Novo lançamento -->
-    <router-link
-      to="/lancamentos/novo"
-      class="w-full sm:w-auto
-             inline-flex items-center justify-center
-             gap-2
-             px-4 py-2.5
-             rounded-lg
-             bg-white
-             text-[hsl(146,28%,35%)]
-             text-sm font-semibold
-             shadow-md
-             transition-all duration-200
-             hover:bg-white/90
-             hover:shadow-lg
-             hover:-translate-y-0.5
-             active:translate-y-0"
+    <div
+      class="relative z-10
+             min-h-screen
+             p-4
+             pt-[88px]
+             sm:p-6
+             sm:pt-[96px]"
     >
-      <span class="text-lg leading-none">+</span>
-      Novo lançamento
-    </router-link>
-  </div>
+
+      <!-- Cabeçalho -->
+      <div
+        class="max-w-6xl mx-auto mb-6
+               flex flex-col sm:flex-row
+               sm:items-center
+               sm:justify-between
+               gap-4"
+      >
+        <div>
+          <h1 class="text-xl sm:text-2xl font-semibold text-white">
+            Lançamentos
+          </h1>
+
+          <p class="text-sm text-white/70 mt-1">
+            Consulte e gerencie seus lançamentos financeiros.
+          </p>
+        </div>
+
+        <!-- Novo lançamento -->
+        <router-link
+          to="/lancamentos/novo"
+          class="w-full sm:w-auto
+                 inline-flex items-center justify-center
+                 gap-2
+                 px-4 py-2.5
+                 rounded-lg
+                 bg-white
+                 text-[hsl(146,28%,35%)]
+                 text-sm font-semibold
+                 shadow-md
+                 transition-all duration-200
+                 hover:bg-white/90
+                 hover:shadow-lg
+                 hover:-translate-y-0.5
+                 active:translate-y-0"
+        >
+          <span class="text-lg leading-none">+</span>
+          Novo lançamento
+        </router-link>
+      </div>
+
       <!-- Filtros -->
       <div
         class="max-w-6xl mx-auto
@@ -84,9 +77,7 @@
           <!-- Mês -->
           <div class="flex-1">
             <label
-              class="block text-xs font-medium
-                     text-ink/60 uppercase
-                     mb-1.5"
+              class="block text-xs font-medium text-ink/60 uppercase mb-1.5"
             >
               Mês
             </label>
@@ -120,9 +111,7 @@
           <!-- Ano -->
           <div class="flex-1">
             <label
-              class="block text-xs font-medium
-                     text-ink/60 uppercase
-                     mb-1.5"
+              class="block text-xs font-medium text-ink/60 uppercase mb-1.5"
             >
               Ano
             </label>
@@ -156,9 +145,7 @@
           <!-- Tipo -->
           <div class="flex-1">
             <label
-              class="block text-xs font-medium
-                     text-ink/60 uppercase
-                     mb-1.5"
+              class="block text-xs font-medium text-ink/60 uppercase mb-1.5"
             >
               Tipo
             </label>
@@ -203,8 +190,7 @@
       <!-- Carregando -->
       <p
         v-if="carregando"
-        class="text-sm text-white/80
-               text-center py-8"
+        class="text-sm text-white/80 text-center py-8"
       >
         Carregando...
       </p>
@@ -221,7 +207,6 @@
                overflow-hidden"
       >
         <div class="overflow-x-auto">
-
           <table class="w-full min-w-[700px] text-sm">
 
             <thead
@@ -267,11 +252,7 @@
                   {{ l.categoria ?? '-' }}
                 </td>
 
-                <td
-                  class="px-4 py-3
-                         font-mono
-                         text-ink/70"
-                >
+                <td class="px-4 py-3 font-mono text-ink/70">
                   {{ formatarData(l.data_lancamento) }}
                 </td>
 
@@ -324,6 +305,7 @@
                 </td>
               </tr>
 
+              <!-- Nenhum lançamento -->
               <tr v-if="!lancamentos.length">
                 <td
                   colspan="5"
@@ -331,7 +313,11 @@
                          text-center
                          text-ink/50"
                 >
-                  <div class="flex flex-col items-center gap-2">
+                  <div
+                    class="flex flex-col
+                           items-center
+                           gap-2"
+                  >
                     <span
                       class="text-2xl
                              text-[hsl(146,28%,35%)]/40"
@@ -348,7 +334,6 @@
 
             </tbody>
           </table>
-
         </div>
       </div>
 
@@ -366,7 +351,6 @@
                justify-between
                text-sm"
       >
-
         <button
           :disabled="pagina <= 1"
           @click="mudarPagina(pagina - 1)"
@@ -403,7 +387,6 @@
         >
           Próxima
         </button>
-
       </div>
 
     </div>
