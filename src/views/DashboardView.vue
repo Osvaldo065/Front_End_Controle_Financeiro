@@ -16,18 +16,18 @@
     <p v-if="carregando" class="text-sm text-ink/60">Carregando...</p>
 
     <div v-else-if="dados" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-      <div class="border border-line rounded bg-white p-4">
-        <p class="text-xs uppercase text-ink/50 mb-1">Saldo atual</p>
+      <div class="border border-line rounded bg-sky-300 p-4">
+        <p class="text-white text-xs uppercase text-ink/50 mb-1">Saldo atual</p>
         <p class="font-mono text-lg" :class="dados.saldo_atual >= 0 ? 'text-ledger' : 'text-rust'">
           {{ formatarMoeda(dados.saldo_atual) }}
         </p>
       </div>
-      <div class="border border-line rounded bg-white p-4">
-        <p class="text-xs uppercase text-ink/50 mb-1">Receitas ({{ dados.quantidade_receitas ?? '-' }})</p>
+      <div class="border border-line rounded bg-green-300 p-4">
+        <p class="text-white text-xs uppercase text-ink/50 mb-1">Receitas ({{ dados.quantidade_receitas ?? '-' }})</p>
         <p class="font-mono text-lg text-ledger">{{ formatarMoeda(dados.total_receitas) }}</p>
       </div>
-      <div class="border border-line rounded bg-white p-4">
-        <p class="text-xs uppercase text-ink/50 mb-1">Despesas ({{ dados.quantidade_despesas ?? '-' }})</p>
+      <div class="border border-line rounded bg-rose-300 p-4">
+        <p class="text-white text-xs uppercase text-ink/50 mb-1">Despesas ({{ dados.quantidade_despesas ?? '-' }})</p>
         <p class="font-mono text-lg text-rust">{{ formatarMoeda(dados.total_despesas) }}</p>
       </div>
     </div>
@@ -47,9 +47,9 @@
       <div>
         <h2 class="text-sm font-semibold uppercase text-ink/60 mb-3">Últimos lançamentos</h2>
         <ul v-if="ultimosLancamentos.length" class="divide-y divide-line border border-line rounded bg-white">
-          <li v-for="l in ultimosLancamentos" :key="l.id" class="flex justify-between px-3 py-2 text-sm">
+          <li v-for="l in ultimosLancamentos" :key="l.id_lancamento" class="flex justify-between px-3 py-2 text-sm">
             <span>{{ l.descricao }}</span>
-            <span class="font-mono" :class="l.tipo_transacao === 'DESPESA' ? 'text-rust' : 'text-ledger'">
+            <span class="font-mono" :class="l.tipo_transacao === 'Despesa' ? 'text-rust' : 'text-ledger'">
               {{ formatarMoeda(l.valor) }}
             </span>
           </li>
@@ -93,8 +93,6 @@ async function carregar() {
     ])
     dados.value = dashboardRes.data
     gastosPorCategoria.value = gastosRes.data || []
-    // NOTA: ajuste "ultimos_lancamentos" para o nome do campo do seu
-    // DashboardResponse que traz a lista de últimos lançamentos.
     ultimosLancamentos.value = dashboardRes.data?.ultimos_lancamentos || []
   } catch (e) {
     erro.value = e.response?.data?.detail || 'Não foi possível carregar o painel.'
