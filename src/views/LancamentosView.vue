@@ -130,7 +130,7 @@ async function carregar() {
     })
     // NOTA: se a resposta paginada vier dentro de um envelope
     // (ex: { items: [...], total: N }), ajuste para data.items aqui.
-    lancamentos.value = Array.isArray(data) ? data : data.items || []
+    lancamentos.value = Array.isArray(data) ? data : data.dados || []
   } catch (e) {
     erro.value = e.response?.data?.detail || 'Não foi possível carregar os lançamentos.'
   } finally {
