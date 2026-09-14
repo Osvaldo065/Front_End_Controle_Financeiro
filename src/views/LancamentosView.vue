@@ -40,9 +40,9 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-line">
-        <tr v-for="l in lancamentos" :key="l.id">
+        <tr v-for="l in lancamentos" :key="l.id_lancamento">
           <td class="px-3 py-2">{{ l.descricao }}</td>
-          <td class="px-3 py-2">{{ l.categoria ?? l.nome_categoria ?? '-' }}</td>
+          <td class="px-3 py-2">{{ l.id_categoria ?? l.nome_categoria ?? '-' }}</td>
           <td class="px-3 py-2 font-mono">{{ formatarData(l.data_lancamento) }}</td>
           <td
             class="px-3 py-2 text-right font-mono"
@@ -52,7 +52,7 @@
           </td>
           <td class="px-3 py-2 text-right whitespace-nowrap">
             <router-link :to="`/lancamentos/${l.id_lancamento}/editar`" class="text-ledger hover:underline mr-3">Editar</router-link>
-            <button @click="remover(l.id)" class="text-rust hover:underline">Excluir</button>
+            <button @click="remover(l.id_lancamento)" class="text-rust hover:underline">Excluir</button>
           </td>
         </tr>
         <tr v-if="!lancamentos.length">
@@ -144,10 +144,10 @@ function mudarPagina(novaPagina) {
   carregar()
 }
 
-async function remover(id) {
+async function remover(id_lancamento) {
   if (!confirm('Excluir este lançamento?')) return
   try {
-    await api.delete(`/lancamentos/${id}`)
+    await api.delete(`/lancamentos/${id_lancamento}`)
     carregar()
   } catch (e) {
     erro.value = e.response?.data?.detail || 'Não foi possível excluir o lançamento.'
