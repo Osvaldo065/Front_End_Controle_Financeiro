@@ -2,24 +2,20 @@
   <div class="relative min-h-screen overflow-hidden">
 
     <!-- Fundo -->
-    <div
-      class="fixed inset-0
+    <div class="fixed inset-0
              bg-gradient-to-br
              from-[hsl(146,28%,35%)]
              via-[hsl(146,30%,42%)]
-             to-[hsl(146,38%,58%)]"
-    ></div>
+             to-[hsl(146,38%,58%)]"></div>
 
     <!-- Conteúdo -->
-    <div
-      class="relative z-10
+    <div class="relative z-10
              min-h-screen
              px-4
              py-6
              pt-[88px]
              sm:px-6
-             sm:pt-[96px]"
-    >
+             sm:pt-[96px]">
 
       <!-- Cabeçalho -->
       <div class="max-w-2xl mx-auto mb-6">
@@ -36,42 +32,29 @@
       </div>
 
       <!-- Card -->
-      <div
-        class="max-w-2xl mx-auto
+      <div class="max-w-2xl mx-auto
                bg-white/95
                backdrop-blur-sm
                border border-white/30
                rounded-2xl
                shadow-2xl
                px-5 py-6
-               sm:px-8 sm:py-8"
-      >
+               sm:px-8 sm:py-8">
 
-        <form
-          @submit.prevent="salvar"
-          class="space-y-5"
-        >
+        <form @submit.prevent="salvar" class="space-y-5">
 
           <!-- Descrição -->
           <div>
-            <label
-              for="descricao"
-              class="block
+            <label for="descricao" class="block
                      text-sm
                      font-medium
                      text-ink/80
-                     mb-1.5"
-            >
+                     mb-1.5">
               Descrição
             </label>
 
-            <input
-              id="descricao"
-              v-model="form.descricao"
-              type="text"
-              required
-              placeholder="Ex.: Mercado, salário, aluguel..."
-              class="w-full
+            <input id="descricao" v-model="form.descricao" type="text" required
+              placeholder="Ex.: Mercado, salário, aluguel..." class="w-full
                      border border-line
                      rounded-lg
                      px-3.5 py-2.5
@@ -82,31 +65,20 @@
                      focus:outline-none
                      focus:ring-2
                      focus:ring-[hsl(146,28%,35%)]/30
-                     focus:border-[hsl(146,28%,35%)]"
-            />
+                     focus:border-[hsl(146,28%,35%)]" />
           </div>
 
           <!-- Valor -->
           <div>
-            <label
-              for="valor"
-              class="block
+            <label for="valor" class="block
                      text-sm
                      font-medium
                      text-ink/80
-                     mb-1.5"
-            >
+                     mb-1.5">
               Valor
             </label>
 
-            <input
-              id="valor"
-              v-model.number="form.valor"
-              type="number"
-              step="0.01"
-              min="0"
-              required
-              placeholder="0,00"
+            <input id="valor" v-model.number="form.valor" type="number" step="0.01" min="0" required placeholder="0,00"
               class="w-full
                      border border-line
                      rounded-lg
@@ -119,8 +91,7 @@
                      focus:outline-none
                      focus:ring-2
                      focus:ring-[hsl(146,28%,35%)]/30
-                     focus:border-[hsl(146,28%,35%)]"
-            />
+                     focus:border-[hsl(146,28%,35%)]" />
           </div>
 
           <!-- Data e Categoria -->
@@ -128,23 +99,15 @@
 
             <!-- Data -->
             <div>
-              <label
-                for="data_lancamento"
-                class="block
+              <label for="data_lancamento" class="block
                        text-sm
                        font-medium
                        text-ink/80
-                       mb-1.5"
-              >
+                       mb-1.5">
                 Data
               </label>
 
-              <input
-                id="data_lancamento"
-                v-model="form.data_lancamento"
-                type="date"
-                required
-                class="w-full
+              <input id="data_lancamento" v-model="form.data_lancamento" type="date" required class="w-full
                        border border-line
                        rounded-lg
                        px-3.5 py-2.5
@@ -154,28 +117,20 @@
                        focus:outline-none
                        focus:ring-2
                        focus:ring-[hsl(146,28%,35%)]/30
-                       focus:border-[hsl(146,28%,35%)]"
-              />
+                       focus:border-[hsl(146,28%,35%)]" />
             </div>
 
             <!-- Categoria -->
             <div>
-              <label
-                for="categoria"
-                class="block
+              <label for="categoria" class="block
                        text-sm
                        font-medium
                        text-ink/80
-                       mb-1.5"
-              >
+                       mb-1.5">
                 Categoria
               </label>
 
-              <select
-                id="categoria"
-                v-model.number="form.id_categoria"
-                required
-                class="w-full
+              <select id="categoria" v-model.number="form.id_categoria" required class="w-full
                        border border-line
                        rounded-lg
                        px-3.5 py-2.5
@@ -185,17 +140,12 @@
                        focus:outline-none
                        focus:ring-2
                        focus:ring-[hsl(146,28%,35%)]/30
-                       focus:border-[hsl(146,28%,35%)]"
-              >
+                       focus:border-[hsl(146,28%,35%)]">
                 <option :value="null">
                   Selecione uma categoria
                 </option>
 
-                <option
-                  v-for="c in categorias"
-                  :key="c.id_categoria"
-                  :value="c.id_categoria"
-                >
+                <option v-for="c in categorias" :key="c.id_categoria" :value="c.id_categoria">
                   {{ c.nome }}
                 </option>
               </select>
@@ -208,22 +158,15 @@
 
             <!-- Tipo -->
             <div>
-              <label
-                for="tipo_transacao"
-                class="block
+              <label for="tipo_transacao" class="block
                        text-sm
                        font-medium
                        text-ink/80
-                       mb-1.5"
-              >
+                       mb-1.5">
                 Tipo de transação
               </label>
 
-              <select
-                id="tipo_transacao"
-                v-model="form.tipo_transacao"
-                required
-                class="w-full
+              <select id="tipo_transacao" v-model="form.tipo_transacao" required class="w-full
                        border border-line
                        rounded-lg
                        px-3.5 py-2.5
@@ -233,8 +176,7 @@
                        focus:outline-none
                        focus:ring-2
                        focus:ring-[hsl(146,28%,35%)]/30
-                       focus:border-[hsl(146,28%,35%)]"
-              >
+                       focus:border-[hsl(146,28%,35%)]">
                 <option value="Receita">
                   Receita
                 </option>
@@ -247,22 +189,15 @@
 
             <!-- Status -->
             <div>
-              <label
-                for="status_pagamento"
-                class="block
+              <label for="status_pagamento" class="block
                        text-sm
                        font-medium
                        text-ink/80
-                       mb-1.5"
-              >
+                       mb-1.5">
                 Status do pagamento
               </label>
 
-              <select
-                id="status_pagamento"
-                v-model="form.status_pagamento"
-                required
-                class="w-full
+              <select id="status_pagamento" v-model="form.status_pagamento" required class="w-full
                        border border-line
                        rounded-lg
                        px-3.5 py-2.5
@@ -272,8 +207,7 @@
                        focus:outline-none
                        focus:ring-2
                        focus:ring-[hsl(146,28%,35%)]/30
-                       focus:border-[hsl(146,28%,35%)]"
-              >
+                       focus:border-[hsl(146,28%,35%)]">
                 <option value="Pago">
                   Pago
                 </option>
@@ -292,22 +226,15 @@
 
           <!-- Tipo de pagamento -->
           <div>
-            <label
-              for="tipo_pagamento"
-              class="block
+            <label for="tipo_pagamento" class="block
                      text-sm
                      font-medium
                      text-ink/80
-                     mb-1.5"
-            >
+                     mb-1.5">
               Tipo de pagamento
             </label>
 
-            <select
-              id="tipo_pagamento"
-              v-model="form.tipo_pagamento"
-              required
-              class="w-full
+            <select id="tipo_pagamento" v-model="form.tipo_pagamento" required class="w-full
                      border border-line
                      rounded-lg
                      px-3.5 py-2.5
@@ -317,8 +244,7 @@
                      focus:outline-none
                      focus:ring-2
                      focus:ring-[hsl(146,28%,35%)]/30
-                     focus:border-[hsl(146,28%,35%)]"
-            >
+                     focus:border-[hsl(146,28%,35%)]">
               <option :value="null">
                 Selecione o tipo de pagamento
               </option>
@@ -350,30 +276,23 @@
           </div>
 
           <!-- Erro -->
-          <p
-            v-if="erro"
-            class="text-sm
+          <p v-if="erro" class="text-sm
                    text-rust
                    bg-red-50
                    border border-red-100
                    rounded-lg
-                   px-3 py-2.5"
-          >
+                   px-3 py-2.5">
             {{ erro }}
           </p>
 
           <!-- Ações -->
-          <div
-            class="flex flex-col-reverse
+          <div class="flex flex-col-reverse
                    sm:flex-row
                    sm:justify-end
                    gap-3
-                   pt-2"
-          >
+                   pt-2">
 
-            <router-link
-              to="/lancamentos"
-              class="w-full sm:w-auto
+            <router-link to="/lancamentos" class="w-full sm:w-auto
                      inline-flex
                      items-center
                      justify-center
@@ -386,15 +305,11 @@
                      font-medium
                      transition-all duration-200
                      hover:bg-gray-50
-                     hover:text-ink"
-            >
+                     hover:text-ink">
               Cancelar
             </router-link>
 
-            <button
-              type="submit"
-              :disabled="carregando"
-              class="w-full sm:w-auto
+            <button type="submit" :disabled="carregando" class="w-full sm:w-auto
                      inline-flex
                      items-center
                      justify-center
@@ -414,8 +329,7 @@
                      disabled:opacity-60
                      disabled:cursor-not-allowed
                      disabled:hover:translate-y-0
-                     disabled:hover:shadow-md"
-            >
+                     disabled:hover:shadow-md">
               <span v-if="carregando">
                 Salvando...
               </span>
