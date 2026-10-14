@@ -114,11 +114,11 @@
 
             <p class="font-mono
                      text-xl
-                     font-semibold" :class="dados.saldo_atual >= 0
+                     font-semibold" :class="dados.saldo >= 0
                         ? 'text-[hsl(146,28%,35%)]'
                         : 'text-rust'
                       ">
-              {{ formatarMoeda(dados.saldo_atual) }}
+              {{ formatarMoeda(dados.saldo) }}
             </p>
           </div>
 

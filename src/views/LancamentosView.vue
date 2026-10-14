@@ -104,7 +104,7 @@
               Mês
             </label>
 
-            <select v-model.number="filtros.mes" @change="carregar" class="w-full
+            <select v-model.number="filtros.mes" @change="aplicarFiltros" class="w-full
                      border border-line
                      rounded-xl
                      px-3 py-2.5
@@ -139,7 +139,7 @@
               Ano
             </label>
 
-            <select v-model.number="filtros.ano" @change="carregar" class="w-full
+            <select v-model.number="filtros.ano" @change="aplicarFiltros" class="w-full
                      border border-line
                      rounded-xl
                      px-3 py-2.5
@@ -174,7 +174,7 @@
               Tipo
             </label>
 
-            <select v-model="filtros.tipo_transacao" @change="carregar" class="w-full
+            <select v-model="filtros.tipo_transacao" @change="aplicarFiltros" class="w-full
                      border border-line
                      rounded-xl
                      px-3 py-2.5
@@ -762,6 +762,11 @@ async function carregar() {
   } finally {
     carregando.value = false
   }
+}
+
+function aplicarFiltros() {
+  pagina.value = 1
+  carregar()
 }
 
 function mudarPagina(novaPagina) {
