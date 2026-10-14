@@ -6,12 +6,14 @@ import RegisterView from '../views/RegisterView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import LancamentosView from '../views/LancamentosView.vue'
 import LancamentoFormView from '../views/LancamentoFormView.vue'
+import AnaliseDetalhadaView from '../views/AnaliseDetalhadaView.vue'
 
 const routes = [
   { path: '/', redirect: '/dashboard' },
   { path: '/login', name: 'login', component: LoginView, meta: { public: true } },
   { path: '/cadastro', name: 'cadastro', component: RegisterView, meta: { public: true } },
   { path: '/dashboard', name: 'dashboard', component: DashboardView },
+  { path: '/analise-detalhada', name: 'analise-detalhada', component: AnaliseDetalhadaView },
   { path: '/lancamentos', name: 'lancamentos', component: LancamentosView },
   { path: '/lancamentos/novo', name: 'lancamento-novo', component: LancamentoFormView },
   { path: '/lancamentos/:id/editar', name: 'lancamento-editar', component: LancamentoFormView, props: true }

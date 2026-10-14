@@ -133,6 +133,28 @@ function sair() {
           </router-link>
 
 
+          <!-- Análise detalhada -->
+          <router-link
+            to="/analise-detalhada"
+            class="text-sm
+                   text-text
+                   no-underline
+                   border-b-2
+                   border-transparent
+                   transition-colors
+                   duration-300
+                   hover:text-ledger
+                   hover:border-ledger
+                   pb-1"
+            :class="{
+              'text-ledger font-medium border-ledger':
+                route.name === 'analise-detalhada'
+            }"
+          >
+            Análise detalhada
+          </router-link>
+
+
           <!-- Lançamentos -->
           <router-link
             to="/lancamentos"
@@ -365,6 +387,26 @@ function sair() {
             }"
           >
             Painel
+          </router-link>
+
+
+          <!-- Análise detalhada -->
+          <router-link
+            to="/analise-detalhada"
+            @click="closeMobileMenu"
+            class="px-3
+                   py-3
+                   rounded-md
+                   text-sm
+                   transition-colors
+                   hover:bg-black/5
+                   hover:text-ledger"
+            :class="{
+              'text-ledger font-medium bg-black/5':
+                route.name === 'analise-detalhada'
+            }"
+          >
+            Análise detalhada
           </router-link>
 
 
